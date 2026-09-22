@@ -25,6 +25,7 @@ function MusicPlayer() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [isLooping, setIsLooping] = useState(false);
 
   const currentTrack = tracks[currentIndex] ?? null;
 
@@ -156,6 +157,17 @@ function MusicPlayer() {
         >
           ⏭
         </button>
+        <button
+          type="button"
+          onClick={() => setIsLooping((prev) => !prev)}
+          disabled={!currentTrack}
+          className={`music-btn ${isLooping ? "music-btn-active" : ""}`}
+          aria-pressed={isLooping}
+          aria-label={isLooping ? "Turn off repeat" : "Repeat this song"}
+          title={isLooping ? "Turn off repeat" : "Repeat this song"}
+        >
+          🔁
+        </button>
       </div>
 
       <label className="music-upload">
@@ -186,6 +198,7 @@ function MusicPlayer() {
       <audio
         ref={audioRef}
         src={currentTrack?.url}
+        loop={isLooping}
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
         onTimeUpdate={(event) => setCurrentTime(event.target.currentTime)}

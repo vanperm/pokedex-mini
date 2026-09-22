@@ -5,26 +5,82 @@
 body {
   margin: 0;
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-  background: #f5f5f5;
   color: #222;
+  background-color: #f2f0ee;
+  background-image: radial-gradient(circle, rgba(204, 0, 0, 0.07) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+.bg-video-wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: #f2f0ee;
+}
+
+.bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ui-toggle {
+  position: fixed;
+  top: 40px;
+  left: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 52px;
+  border: none;
+  border-radius: 0 14px 14px 0;
+  background: #cc0000;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  transition: background 0.2s ease;
+}
+
+.ui-toggle:hover {
+  background: #a00000;
 }
 
 .app-shell {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: flex-start;
-  gap: 40px;
+  gap: 36px;
   min-height: 100vh;
+  max-width: 900px;
+  margin: 0 auto;
   padding: 32px;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.app-shell-hidden {
+  opacity: 0;
+  transform: translateX(-16px);
+  pointer-events: none;
 }
 
 .sidebar {
   flex: 0 0 300px;
+  align-self: flex-start;
   position: sticky;
   top: 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  min-height: calc(100vh - 64px);
+  padding: 24px 20px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #ffffff 0%, #fff3f2 100%);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
 }
 
 .pokedex-art {
@@ -33,10 +89,49 @@ body {
   filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.18));
 }
 
+.sidebar-decoration {
+  flex: 1;
+  width: 100%;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #cc0000;
+  opacity: 0.12;
+}
+
+.sidebar-decoration svg {
+  width: 130px;
+  height: 130px;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding-top: 16px;
+  border-top: 1px dashed #e3d3d3;
+  color: #a88;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+
+.sidebar-footer-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #cc0000;
+  flex-shrink: 0;
+}
+
 .main-content {
   flex: 1 1 auto;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
+  min-width: 0;
 }
 
 .app {
@@ -56,6 +151,11 @@ body {
     position: static;
     flex: none;
     width: 100%;
+    min-height: auto;
+  }
+
+  .sidebar-decoration {
+    display: none;
   }
 
   .main-content {
@@ -69,9 +169,16 @@ h1 {
 }
 
 .status {
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
   text-align: center;
   font-size: 18px;
   color: #555;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 8px 18px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .status-error {
@@ -178,6 +285,10 @@ h1 {
   color: #cc0000;
   text-decoration: none;
   font-weight: 600;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 6px 14px;
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .back-link:hover {
@@ -188,7 +299,14 @@ h1 {
   text-align: center;
 }
 
-.detail-page img {
+.detail-card {
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 16px;
+  padding: 24px 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.detail-card img {
   margin: 0 auto;
 }
 
@@ -217,12 +335,22 @@ h1 {
 }
 
 .app-header {
-  margin-bottom: 8px;
+  margin-bottom: 16px;
+  text-align: center;
 }
 
 .app-title-link {
+  display: inline-block;
   text-decoration: none;
   color: inherit;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 10px 28px;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.app-title-link h1 {
+  margin: 0;
 }
 
 .music-player {
@@ -330,6 +458,10 @@ h1 {
   height: 44px;
   background: #7fca6a;
   font-size: 16px;
+}
+
+.music-btn-active {
+  background: #ffcf4d;
 }
 
 .music-upload {

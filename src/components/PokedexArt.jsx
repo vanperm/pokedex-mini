@@ -26,21 +26,20 @@ function PokedexArt() {
       <circle cx="172" cy="34" r="7" fill="#5ac95a" />
 
       {/* main screen */}
-      <rect x="24" y="108" width="162" height="110" rx="8" fill="#f4f4f4" />
-      <rect x="32" y="116" width="146" height="94" rx="4" fill="#1b2a52" />
+      <rect x="24" y="108" width="162" height="100" rx="8" fill="#f4f4f4" />
+      <rect x="32" y="116" width="146" height="84" rx="4" fill="#1b2a52" />
       <rect x="40" y="124" width="60" height="10" rx="2" fill="#4fd0e0" />
       <rect x="40" y="140" width="90" height="6" rx="2" fill="#9fb3e8" />
       <rect x="40" y="152" width="70" height="6" rx="2" fill="#9fb3e8" />
-      <rect x="40" y="164" width="80" height="6" rx="2" fill="#9fb3e8" />
-      <circle cx="150" cy="185" r="14" fill="#4fd0e0" opacity="0.85" />
+      <circle cx="150" cy="182" r="12" fill="#4fd0e0" opacity="0.85" />
 
-      {/* small button + d-pad row */}
-      <rect x="24" y="230" width="26" height="10" rx="5" fill="#c94a3a" />
-      <g transform="translate(88,232)">
+      {/* small button + d-pad row (kept clear of the screen above) */}
+      <rect x="24" y="220" width="26" height="10" rx="5" fill="#c94a3a" />
+      <g transform="translate(88,244)">
         <rect x="-8" y="-24" width="16" height="48" rx="4" fill="#2b2b2b" />
         <rect x="-24" y="-8" width="48" height="16" rx="4" fill="#2b2b2b" />
       </g>
-      <rect x="150" y="228" width="30" height="12" rx="6" fill="#7fca6a" />
+      <rect x="150" y="224" width="30" height="12" rx="6" fill="#7fca6a" />
 
       {/* right panel */}
       <rect x="220" y="10" width="190" height="280" rx="18" fill="#e0332a" />

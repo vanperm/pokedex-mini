@@ -47,7 +47,14 @@ function DetailPage() {
     };
   }, [name]); // re-run whenever the :name in the URL changes
 
-  if (isLoading) return <p className="status">Loading {name}…</p>;
+  if (isLoading) {
+    return (
+      <div className="detail-page">
+        <Link to="/" className="back-link">← Back to list</Link>
+        <p className="status">Loading {name}…</p>
+      </div>
+    );
+  }
 
   if (error) {
     return (
@@ -61,24 +68,26 @@ function DetailPage() {
   return (
     <div className="detail-page">
       <Link to="/" className="back-link">← Back to list</Link>
-      <img
-        src={pokemon.sprites.other["official-artwork"].front_default}
-        alt={pokemon.name}
-        width={200}
-        height={200}
-      />
-      <h2>{capitalize(pokemon.name)}</h2>
-      <p className="pokemon-types">
-        {pokemon.types.map((t) => t.type.name).join(", ")}
-      </p>
-      <ul className="stat-list">
-        {pokemon.stats.map((s) => (
-          <li key={s.stat.name}>
-            <span className="stat-name">{s.stat.name}</span>
-            <span className="stat-value">{s.base_stat}</span>
-          </li>
-        ))}
-      </ul>
+      <div className="detail-card">
+        <img
+          src={pokemon.sprites.other["official-artwork"].front_default}
+          alt={pokemon.name}
+          width={200}
+          height={200}
+        />
+        <h2>{capitalize(pokemon.name)}</h2>
+        <p className="pokemon-types">
+          {pokemon.types.map((t) => t.type.name).join(", ")}
+        </p>
+        <ul className="stat-list">
+          {pokemon.stats.map((s) => (
+            <li key={s.stat.name}>
+              <span className="stat-name">{s.stat.name}</span>
+              <span className="stat-value">{s.base_stat}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
