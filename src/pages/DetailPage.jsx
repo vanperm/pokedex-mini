@@ -48,7 +48,15 @@ function DetailPage() {
   }, [name]); // re-run whenever the :name in the URL changes
 
   if (isLoading) return <p className="status">Loading {name}…</p>;
-  if (error) return <p className="status status-error">{error}</p>;
+
+  if (error) {
+    return (
+      <div className="detail-page">
+        <Link to="/" className="back-link">← Back to list</Link>
+        <p className="status status-error">{error}</p>
+      </div>
+    );
+  }
 
   return (
     <div className="detail-page">
